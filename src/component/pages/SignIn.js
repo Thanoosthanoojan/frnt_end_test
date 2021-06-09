@@ -1,24 +1,49 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {View, StyleSheet} from 'react-native';
+import {Input, Button} from '../atoms';
 
 const SignIn = () => {
+  const [email, onChangeText] = React.useState('');
+  const [password, onChangePassword] = React.useState('');
+
   return (
-    <View style={styles.contentCenter}>
-      <Text style={styles.textStyle}>SignIn</Text>
+    <View style={[styles.mainContainer]}>
+      <View style={[styles.container]}>
+        <Input
+          label="Email"
+          placeholder="your@address.net"
+          onChange={value => onChangeText(value)}
+          value={email}
+        />
+        <Input
+          label="Password"
+          placeholder="***********"
+          onChange={value => onChangePassword(value)}
+          value={password}
+          secureTextEntry
+        />
+        <Button
+          buttonTitle="Sign-in"
+          onPress={() => console.log(email, password)}
+        />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  contentCenter: {
+  mainContainer: {
+    justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
-    justifyContent: 'center',
+    margin: 10,
   },
-  textStyle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'blue',
+  container: {
+    justifyContent: 'center',
+    height: 230,
+    borderColor: 'black',
+    borderWidth: 2,
+    padding: 10,
   },
 });
 
