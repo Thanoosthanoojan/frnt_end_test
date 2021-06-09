@@ -4,7 +4,7 @@ import {View, Text, StyleSheet, TextInput} from 'react-native';
 const Input = ({
   label,
   onChange,
-  value,
+  error,
   placeholder,
   keyboardType = 'default',
   secureTextEntry,
@@ -22,10 +22,10 @@ const Input = ({
             keyboardType={keyboardType}
             onChangeText={text => onChange(text)}
             secureTextEntry={secureTextEntry}
-            placeholderTextColor="black"
-            value={value}
+            placeholderTextColor="gray"
           />
         </View>
+        <View>{<Text style={[styles.errorStyle]}>{error || ''}</Text>}</View>
       </View>
     </View>
   );
@@ -58,6 +58,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginTop: 10,
+  },
+  errorStyle: {
+    color: 'red',
   },
   input: {
     width: 200,
